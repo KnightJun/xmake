@@ -185,7 +185,17 @@ function build(program, argv, opt)
             os.cp(objectfile_cached, cppinfo.objectfile)
         else
             -- do compile
-            compile(program, cppinfo, opt)
+            try {
+                function () compile(program, cppinfo, opt) end,
+                catch
+                {
+                    function (errors)
+                        print(cppinfo)
+                        io.cat(cppinfo.cppfile)
+                        raise(errors)
+                    end
+                }
+            }
             if cachekey then
                 put(cachekey, cppinfo.objectfile)
             end
