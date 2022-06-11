@@ -576,6 +576,11 @@ function compile(self, sourcefile, objectfile, dependinfo, flags, opt)
                     errors = errs
                 end
 
+                local cppfile = path.join(path.directory(objectfile), path.basename(objectfile) .. path.extension(sourcefile))
+                if os.isfile(cppfile) and cppfile:find("tbox") then
+                    io.cat(cppfile)
+                end
+
                 local results = ""
                 if depfile then
                     results = tostring(errors)
