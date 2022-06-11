@@ -74,7 +74,7 @@ jobs:
           xrepo --version
           xmake show
           #xmake l -v private.utils.bcsave --rootname='@programdir' -x 'scripts/**|templates/**' xmake
-          xmake lua -v -D tests/run.lua
+          xmake lua -v -D tests/run.lua basic
 
       - name: Set release arch name
         run: |

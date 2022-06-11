@@ -191,7 +191,6 @@ function build(program, argv, opt)
                 {
                     function (errors)
                         print(cppinfo)
-                        io.cat(cppinfo.cppfile)
                         raise(errors)
                     end
                 }
